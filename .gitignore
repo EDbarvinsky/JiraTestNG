@@ -1,5 +1,7 @@
 *.iml
 .idea
+*.log
 
 target/
 work/
+test-output/

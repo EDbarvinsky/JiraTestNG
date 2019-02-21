@@ -1,8 +1,11 @@
+package com.epam.testng.utils.constant;
+
 public enum JIRATestResult {
     FAILED("Failed"),
     PASSED("Passed"),
     BLOCKED("Blocked"),
-    UNTESTED("Untested");
+    UNTESTED("Untested"),
+    OUT_OF_SCOPE("Out of Scope");
 
     private final String text;
 

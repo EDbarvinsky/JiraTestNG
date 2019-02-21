@@ -1,3 +1,4 @@
+package com.epam.testng;
 
 import java.lang.annotation.*;
 
@@ -9,6 +10,4 @@ public @interface JIRATestKey {
     String key();
 
     boolean disabled() default false;
-
-    int retryCountIfFailed() default 1;
 }
