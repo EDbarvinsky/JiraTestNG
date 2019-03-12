@@ -2,10 +2,12 @@ package com.epam.testng;
 
 import com.epam.testng.utils.resultconstructor.TestResultConstructor;
 import com.epam.testng.utils.resultconstructor.TestResultConstructorManager;
-import org.testng.ITestContext;
-import org.testng.TestListenerAdapter;
+import org.testng.*;
+import org.testng.xml.XmlSuite;
 
-public class JIRATestNGListener extends TestListenerAdapter {
+import java.util.List;
+
+public class JIRATestNGListener extends TestListenerAdapter implements IReporter{
 
     private TestResultConstructor testResultConstructor = TestResultConstructorManager.getInstance();
 
@@ -17,6 +19,10 @@ public class JIRATestNGListener extends TestListenerAdapter {
         super.getFailedTests().forEach(iTestResult -> testResultConstructor.putTestResultData(iTestResult, iTestResult.getStatus()));
         super.getFailedButWithinSuccessPercentageTests().forEach(iTestResult -> testResultConstructor.putTestResultData(iTestResult, iTestResult.getStatus()));
         testResultConstructor.proceedExcludedTestMethod(iTestContext);
+    }
+
+    @Override
+    public void generateReport(List<XmlSuite> list, List<ISuite> list1, String s) {
         testResultConstructor.saveResultData();
     }
 }
