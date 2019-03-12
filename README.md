@@ -46,6 +46,18 @@ public class YourTestClass {
 </suite>
 ```
 
+3) If you are going to add current listener thrue the TestNG runner configuration
+```java
+public class Runner {
+    public static void main(String[] args) {
+        TestNG testNG = new TestNG();
+        testNG.addListener((ITestNGListener) new JIRATestNGListener());
+....
+        testNG.run();
+    }
+}
+```
+
 ## Test results mapping
 Test result statuses in TestNG is not equal for the statuses in QASpace. 
 Plugin provides next way of mapping:
